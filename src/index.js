@@ -1,8 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import './index.css';
 import App from './App';
+import Other from './Other';
 import reportWebVitals from './reportWebVitals';
+
+
+const routes = [
+  {
+    Component: App,
+    key: 'Home',
+    path: '/'
+  },
+  {
+    Component: Other,
+    key: 'Other',
+    path: '/other'
+  },
+  {
+    Component: Other,
+    key: 'Another',
+    path: '/another'
+  }
+]
+
+function AppRouter () {
+  return (
+    <Router>
+      <nav>
+        {routes.map(route => <Link key={route.key} to={route.path}>{route.key}</Link>)}
+      </nav>
+      <Switch>
+        {
+          routes.map(({key, Component, path}) => <Route key={key} path={path} component={props => <Component {...props} page={key} />}/>)
+        }
+      </Switch>
+    </Router>
+  )
+}
 
 ReactDOM.render(
   <React.StrictMode>
