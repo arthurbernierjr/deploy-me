@@ -6,7 +6,6 @@ import App from './App';
 import Other from './Other';
 import reportWebVitals from './reportWebVitals';
 
-
 const routes = [
   {
     Component: Other,
