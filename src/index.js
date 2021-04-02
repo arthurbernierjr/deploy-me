@@ -9,11 +9,6 @@ import reportWebVitals from './reportWebVitals';
 
 const routes = [
   {
-    Component: App,
-    key: 'Home',
-    path: '/'
-  },
-  {
     Component: Other,
     key: 'Other',
     path: '/other'
@@ -22,6 +17,11 @@ const routes = [
     Component: Other,
     key: 'Another',
     path: '/another'
+  },
+  {
+    Component: App,
+    key: 'Home',
+    path: '/'
   }
 ]
 
@@ -33,7 +33,12 @@ function AppRouter () {
       </nav>
       <Switch>
         {
-          routes.map(({key, Component, path}) => <Route key={key} path={path} component={props => <Component {...props} page={key} />}/>)
+          routes.map(({key, Component, path}) => (
+            <Route
+              key={key}
+              path={path}
+              component={props => <Component {...props} page={key} />}
+              />))
         }
       </Switch>
     </Router>
